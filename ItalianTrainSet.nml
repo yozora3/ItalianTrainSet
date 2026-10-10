@@ -1,0 +1,206 @@
+# 1 "ItalianTrainSet.pnml"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "ItalianTrainSet.pnml"
+# 1 "src/controllers/params.pnml" 1
+grf {
+    grfid: "YZ\AA\07";
+    name: string(STR_NAME);
+    desc: string(STR_DESC);
+  url: string(STR_GRF_URL);
+    version: 001;
+    min_compatible_version: 0;
+# 298 "src/controllers/params.pnml"
+}
+# 2 "ItalianTrainSet.pnml" 2
+# 1 "src/controllers/defines.pnml" 1
+# 3 "ItalianTrainSet.pnml" 2
+# 1 "src/controllers/constructor.pnml" 1
+# 4 "ItalianTrainSet.pnml" 2
+# 1 "src/controllers/errorController.pnml" 1
+disable_item(FEAT_TRAINS);
+# 5 "ItalianTrainSet.pnml" 2
+# 1 "src/controllers/railtypes.pnml" 1
+railtypetable {
+  "RAIL","ELRL","SAAD","SAAA",
+ TR_1435_NE: [SAAN, RAIL],
+ TR_1435_DC: [SAAD, ELRL],
+ TR_1435_AC: [SAAA, ELRL],
+ TR_1435_ACDC: [SAAE, ELRL],
+ TR_1435_METRO: [SAA3, SAB3, "3RDR", MTRO, ELRL],
+ TR_1435_LINEAR: [SAAI, SAAD, ELRL],
+  TR_3000_GUIDE: [rAA3, rAAE, ELRL],
+ TR_UNIVERSAL: [_AAE, RAIL],
+}
+# 6 "ItalianTrainSet.pnml" 2
+# 1 "src/controllers/couple_logic.pnml" 1
+# 7 "ItalianTrainSet.pnml" 2
+# 1 "src/controllers/templates.pnml" 1
+
+train_width_32_px = 1;
+traininfo_y_offset = 2;
+
+
+template tmpl_std_v3(x,y) {
+  [x, y, 8, 24, -3, -16]
+  [x +9, y, 22, 21, -15, -12]
+  [x +32, y, 33, 17, -15, -13]
+  [x +66, y, 22, 22, -5, -12]
+  [x +89, y, 8, 24, -3, -16]
+  [x +98, y, 22, 22, -15, -12]
+  [x +121, y, 33, 17, -15, -13]
+  [x+155, y, 22, 21, -5, -12]
+}
+template tmpl_std_rev_v3(x,y){
+  [x +89, y, 8, 24, -3, -16]
+  [x +98, y, 22, 22, -15, -12]
+  [x +121, y, 33, 17, -15, -13]
+  [x+155, y, 22, 21, -5, -12]
+  [x, y, 8, 24, -3, -16]
+  [x +9, y, 22, 21, -15, -12]
+  [x +32, y, 33, 17, -15, -13]
+  [x +66, y, 22, 22, -5, -12]
+}
+template tmpl_symm_v3(x,y) {
+  [x, y, 8, 24, -3, -16]
+  [x +9, y, 22, 21, -15, -12]
+  [x +32, y, 33, 17, -15, -13]
+  [x +66, y, 22, 22, -5, -12]
+  [x, y, 8, 24, -3, -16]
+  [x +9, y, 22, 21, -15, -12]
+  [x +32, y, 33, 17, -15, -13]
+  [x +66, y, 22, 22, -5, -12]
+}
+
+template tmpl_purchase_mu_car(x,y) {
+  [x, y, 40, 17, -19, -10]
+}
+
+template tmpl_purchase_1c(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [x +121, y, 33, 17, -16, -10]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+template tmpl_purchase_1c_dual(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [x +121, y,32, 17, -5, -13]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+template tmpl_purchase_2c_dual(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [x +32, y, 8, 17, 27, -13]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+template tmpl_purchase_2c_dual_7(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [x +32, y, 8, 17, 23, -13]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+
+spriteset (gfx_empty, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/misc/purchase_32.png") { [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"] }
+# 8 "ItalianTrainSet.pnml" 2
+# 1 "src/controllers/logos.pnml" 1
+template tmpl_badge(x,y) {
+    [x, y, 35, 15, 0, 0]
+}
+template tmpl_badge_metro(x,y) {
+    [x, y, 15, 15, 0, 0]
+}
+template tmpl_badge_line(x,y) {
+    [x, y, 15, 15, -10, 0]
+}
+# 9 "ItalianTrainSet.pnml" 2
+
+
+# 1 "_loco.pnml" 1
+
+  item(FEAT_TRAINS, e412, 265) {}
+# 1 "src/loco/e412/e412.pnml" 1
+
+  spriteset(e412_purchase_body, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_1.png"){ tmpl_purchase_1c(0, 0) }
+  spriteset(e412_purchase_panto, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_panto.png"){ tmpl_purchase_1c(0, 0) }
+  switch(FEAT_TRAINS, SELF, e412_purchase, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: e412_purchase_body; 1: e412_purchase_panto;}
+
+  spriteset(e412_lights_front, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_lights.png"){ tmpl_std_v3(0, 0) }
+  spriteset(e412_lights_end, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_lights.png"){ tmpl_std_rev_v3(0, 0) }
+  switch(FEAT_TRAINS, SELF, sw_e412_lights, train_is_driving_backwards != vehicle_is_flipped){
+    1: e412_lights_end;
+    e412_lights_front;
+  }
+  spriteset(e412_panto_dc, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_panto.png"){ tmpl_std_rev_v3(0, 0) }
+  spriteset(e412_panto_ac, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_panto.png"){ tmpl_std_v3(0, 0) }
+  switch(FEAT_TRAINS, SELF, sw_e412_panto, tile_powers_railtype("SAAA")){
+    1: e412_panto_ac;
+    e412_panto_dc;
+  }
+
+
+spriteset(e412_head, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_1.png"){ tmpl_symm_v3(0, 0) }
+
+  switch(FEAT_TRAINS, SELF, sw_e412_lv, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: e412_head; 1: sw_e412_panto; 2: sw_e412_lights;}
+
+  switch(FEAT_TRAINS, SELF, sw_e412_power_main_dc, tile_powers_railtype("SAAD") || (!railtype_available("SAAD") &&tile_powers_railtype("ELRL"))){
+    1: return 8000;
+    3600;
+  }
+  switch(FEAT_TRAINS, SELF, sw_e412_power_main, tile_powers_railtype("SAAA")){
+    1: return 7400;
+    sw_e412_power_main_dc;
+  }
+
+
+  item(FEAT_TRAINS, e412) {
+  property {
+    ai_special_flag: AI_FLAG_PASSENGER; sprite_id: SPRITE_ID_NEW_TRAIN; misc_flags: bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_SPRITE_STACK, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY); running_cost_base: RUNNING_COST_ELECTRIC; refittable_cargo_classes: bitmask(CC_PASSENGERS); bitmask_vehicle_info: 0; power: 1 kW; reliability_decay: 2;
+    engine_class: ENGINE_CLASS_ELECTRIC; visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);
+    climates_available: ALL_CLIMATES;
+    name: string(STR_TRAIN_NAME, "E.412", string(STR_NAME_CLASS));
+    introduction_date: date(1997, 4, 12);
+    model_life: VEHICLE_NEVER_EXPIRES;
+    vehicle_life: 30;
+    dual_headed: 0;
+    cost_factor: 16;
+    running_cost_factor: 46;
+    speed: 220 km/h;
+    cargo_capacity: 0;
+    track_type:TR_1435_ACDC;
+    power: 1 kW;
+    tractive_effort_coefficient: 0.2;
+    weight: 89 ton;
+
+  }
+ graphics {
+    additional_text:string(STR_TRAIN_DESC_LOCO,
+    string(STR_1435),
+    string(STR_DENKI, string(STR_ACDC_167_1500,15,3000)),
+    string(STR_USAGE, string(STR_MIXED)),
+    string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
+    );
+
+    purchase: e412_purchase;
+    default:sw_e412_lv;
+    power:sw_e412_power_main;
+  }
+}
+# 3 "_loco.pnml" 2
+# 12 "ItalianTrainSet.pnml" 2

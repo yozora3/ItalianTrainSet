@@ -1,0 +1,105 @@
+##grflangid 0x01
+##plural 0
+
+STR_NAME:{TITLE} v{VERSION}
+STR_DESC:{GREEN}Italian{WHITE} Train{RED} Set{BLACK} introduces rolling stock from Italy.{}{}{TINYFONT}{GREEN}Drawn by{LTBLUE} Yozora{GREEN}{}Coded by{LTBLUE} Yozora{}{}{SILVER}GPLv2{}2026
+STR_GRF_URL:https://github.com/Yozora3/ItalianTrainSet
+
+# *Param stuff
+# Costs
+STR_PARAM_NAME_BASECOSTMODBUY:Purchase costs
+STR_PARAM_DESC_BASECOSTMODBUY:Define the purchase costs of vehicle
+
+STR_PARAM_RUN_NAME:Running costs
+STR_PARAM_RUN_DESC:Define the running costs of vehicles
+
+STR_PARAM_NAME_CAPACITY:Train capacity
+STR_PARAM_DESC_CAPACITY:100% — Commuters have enough personal space and are able to take a seat or stand while holding onto the straps or hand rails.{}150% — Commuters have enough personal space to read a newspaper.{}200% — Commuters are pressed against each other in each compartment but can still read small magazines.{}250% — Commuters are pressed against each other, unable to move.{}Custom — Use if you hate your commuters.{}{WHITE}Select 150% for the best experience{BLACK}
+
+STR_PARAM_VLOW:Very Low
+STR_PARAM_LOW:Low
+STR_PARAM_NORMAL:Normal
+STR_PARAM_HIGH:High
+STR_PARAM_VHIGH:Very High
+STR_PARAM_REAL:Realistic
+
+# Capacity
+STR_PARAM_BOOST_RAPID:Boost low capacity limited express trains
+STR_PARAM_BOOST_RAPID_DESC:Optimizes limited express trains' capacity for gameplay.{}0 - 1x, 1 - 1.5x, 2 - 2x and etc.{}For a regular gameplay 1x is enough, as low capacity is backed up with a higher (express) income.
+
+STR_PARAM_HIDE_LOGO:Hide Logos from the purchase menu
+
+STR_PERCENT:{COMMA}%
+STR_PARAM_CAP_CUSTOM:Custom
+
+STR_PARAM_CUSTOMCAPACITY:Multiply capacity. Works only if train capacity set to "custom"
+STR_PARAM_CUSTOMCAPACITYDESC:Do you hate your commuters so much? Come on, they are unable to move already!
+
+# Used for Train Description. Don't change structure of these
+STR_TRAIN_DESC:{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}
+STR_TRAIN_DESC_LOCO:{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}
+
+STR_CONCAT_2:{STRING} {STRING}
+STR_CONCAT_2_DASH:{STRING}/{STRING}
+STR_CONCAT_2_OR:{STRING}{BLACK} or {STRING}
+STR_CONCAT_3:{STRING} {STRING} {STRING}
+STR_CONCAT_4:{STRING} {STRING} {STRING} {STRING}
+# Whitespaces could be removed for specific languages: Hatsune 39 Type -> 初音39形
+STR_TRAIN_NAME:{STRING} {STRING}
+STR_TRAIN_NAME_LONG:{STRING} {STRING} {STRING}
+
+# Badges
+STR_COMPANY:Company
+STR_LINE:Line
+
+# *Desc stuff
+# gauge
+STR_NARROWGAUGE:Gauge:{GOLD} Narrow (1,067mm)
+STR_1067:Gauge:{GOLD} Narrow (1,067mm)
+STR_1435:Gauge:{GOLD} Standard (1,435mm)
+STR_1372:Gauge:{GOLD} Scotch (1,372mm)
+STR_13721435:Gauge:{GOLD} Scotch (1,372mm)->Standard (1,435mm)
+STR_3000:Type:{GOLD} Guideway
+
+# Loading Speed
+STR_LOAD_SPEED:Loading Speed: {GOLD}{STRING}
+STR_DOORS:{COMMA} Door{P "" s}
+STR_DOORS_REFIT:{COMMA} Door{P "" s} (refit to {COMMA} available)
+
+# Formations
+STR_FORMATION:Real Formations: {GOLD}{STRING}
+
+STR_NUM_CARS_1:{COMMA} car{P "" s}
+STR_NUM_CARS_2:{COMMA},{COMMA} cars
+STR_NUM_CARS_3:{COMMA},{COMMA},{COMMA} cars
+STR_NUM_CARS_4:{COMMA},{COMMA},{COMMA},{COMMA} cars
+STR_NUM_CARS_5:{COMMA},{COMMA},{COMMA},{COMMA},{COMMA} cars
+STR_NUM_CARS_6:{COMMA},{COMMA},{COMMA},{COMMA},{COMMA},{COMMA} cars
+STR_NUM_CARS_RANGE:{COMMA}~{COMMA} cars
+
+# Electro system
+STR_DENKI:Power System: {STRING}
+
+STR_DIESEL:{GRAY}Diesel Engine
+STR_DC:{BLUE}DC ({COMMA}V)
+STR_AC_V:{RED}AC ({COMMA}V {COMMA}Hz)
+STR_AC_KV:{RED}AC ({COMMA}kV {COMMA}Hz)
+STR_ACDC:{RED}AC ({COMMA}kV {COMMA}Hz) {SILVER}/{BLUE}DC ({COMMA}V)
+STR_ACDC_167_1500:{RED}AC ({COMMA} kV 16.7 Hz) {SILVER}/ {BLUE}DC ({COMMA}/1500 V)
+
+STR_USAGE:Usage: {STRING}
+STR_MIXED:{LTBLUE}Mixed
+STR_COMMUTER:{LTBLUE}Commuter
+STR_PAX:{GREEN}Passenger
+STR_LT_FREIGHT:{SILVER}Light Freight
+STR_HV_FREIGHT:{GRAY}Heavy Freight
+# *Train Affixes
+STR_NAME_TYPE:Type
+STR_NAME_SERIES:Series
+STR_NAME_CLASS:Class
+
+# Operator
+STR_OPERATOR:Operator: {STRING}
+
+STR_TRENITALIA:Trenitalia
+STR_LIME:{GREEN}{STRING}

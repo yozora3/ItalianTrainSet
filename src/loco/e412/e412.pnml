@@ -1,0 +1,66 @@
+// purchase
+  spriteset(e412_purchase_body, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_1.png"){ tmpl_purchase_1c(0, 0) }
+  spriteset(e412_purchase_panto, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_panto.png"){ tmpl_purchase_1c(0, 0) }
+  TRAIN_CONSTRUCTOR_2(e412_purchase,  e412_purchase_body,  e412_purchase_panto)
+//base
+  spriteset(e412_lights_front, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_lights.png"){ tmpl_std_v3(0, 0) }
+  spriteset(e412_lights_end, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_lights.png"){ tmpl_std_rev_v3(0, 0) }
+  switch(FEAT_TRAINS, SELF, sw_e412_lights, train_is_driving_backwards != vehicle_is_flipped){
+    1: e412_lights_end;
+    e412_lights_front;
+  }
+  spriteset(e412_panto_dc, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_panto.png"){ tmpl_std_rev_v3(0, 0) }
+  spriteset(e412_panto_ac, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_panto.png"){ tmpl_std_v3(0, 0) }
+  switch(FEAT_TRAINS, SELF, sw_e412_panto, tile_powers_railtype("SAAA")){
+    1: e412_panto_ac;
+    e412_panto_dc;
+  }
+
+
+spriteset(e412_head, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_1.png"){ tmpl_symm_v3(0, 0) }
+//*at 600
+  TRAIN_CONSTRUCTOR_3(sw_e412_lv,  e412_head,  sw_e412_panto, sw_e412_lights)
+//
+  switch(FEAT_TRAINS, SELF, sw_e412_power_main_dc, tile_powers_railtype("SAAD") || (!railtype_available("SAAD") &&tile_powers_railtype("ELRL"))){
+    1: return 8000;
+    3600;
+  }
+  switch(FEAT_TRAINS, SELF, sw_e412_power_main, tile_powers_railtype("SAAA")){
+    1: return 7400;
+    sw_e412_power_main_dc;
+  }
+
+//*constructor
+  item(FEAT_TRAINS, e412) {
+  property {
+    OVERRIDEN_TRAIN_DATA
+    engine_class: ENGINE_CLASS_ELECTRIC;    visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);    
+    climates_available: ALL_CLIMATES;
+    name: string(STR_TRAIN_NAME, "E.412", string(STR_NAME_CLASS));
+    introduction_date: date(1997, 4, 12);
+    model_life: VEHICLE_NEVER_EXPIRES;
+    vehicle_life: 30;
+    dual_headed: 0;
+    cost_factor: 16;
+    running_cost_factor: 46;
+    speed: 220 km/h;
+    cargo_capacity: 0;
+    track_type:TR_1435_ACDC;
+    power: 1 kW;
+    tractive_effort_coefficient:  0.2;
+    weight: 89 ton;
+    
+  }
+	graphics {
+    additional_text:string(STR_TRAIN_DESC_LOCO,
+    string(STR_1435),
+    string(STR_DENKI, string(STR_ACDC_167_1500,15,3000)),
+    string(STR_USAGE, string(STR_MIXED)),
+    string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
+    );
+    
+    purchase: e412_purchase;
+    default:sw_e412_lv;
+    power:sw_e412_power_main;
+  }
+}

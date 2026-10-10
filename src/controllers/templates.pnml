@@ -1,0 +1,82 @@
+//offset fixing
+train_width_32_px = 1;
+traininfo_y_offset = 2;
+//TODO lower the amount of templates by using z for offsets. Then rework the dia for tunnels/bridges
+//*v3.0
+template tmpl_std_v3(x,y) {
+  [x, 	 y,	8, 	24,		-3, 	-16] //short
+  [x +9, 	 y,	22,	21,		-15,	-12] //dia1
+  [x +32,  y,	33,	17,		-15,	-13] //long
+  [x +66,  y,	22,	22,		-5, 	-12] //dia2
+  [x +89,  y,	8, 	24,		-3, 	-16] //short
+  [x +98,  y,	22,	22,		-15,	-12] //dia1
+  [x +121, y,	33,	17,		-15,	-13] //long
+  [x+155,  y,	22,	21,		-5, 	-12] //dia2
+}
+template tmpl_std_rev_v3(x,y){
+  [x +89,  y,	8, 	24,		-3, 	-16] //short
+  [x +98,  y,	22,	22,		-15,	-12] //dia1
+  [x +121, y,	33,	17,		-15,	-13] //long
+  [x+155,  y,	22,	21,		-5, 	-12] //dia2
+  [x, 	 y,	8, 	24,		-3, 	-16] //short
+  [x +9, 	 y,	22,	21,		-15,	-12] //dia1
+  [x +32,  y,	33,	17,		-15,	-13] //long
+  [x +66,  y,	22,	22,		-5, 	-12] //dia2
+}
+template tmpl_symm_v3(x,y) {
+  [x, 	 y,	8, 	24,		-3, 	-16] //short
+  [x +9, 	 y,	22,	21,		-15,	-12] //dia1
+  [x +32,  y,	33,	17,		-15,	-13] //long
+  [x +66,  y,	22,	22,		-5, 	-12] //dia2
+  [x, 	 y,	8, 	24,		-3, 	-16] //short
+  [x +9, 	 y,	22,	21,		-15,	-12] //dia1
+  [x +32,  y,	33,	17,		-15,	-13] //long
+  [x +66,  y,	22,	22,		-5, 	-12] //dia2
+}
+//*constructor
+template tmpl_purchase_mu_car(x,y) {
+  [x, y, 40,	17,	 -19, -10] //1 car
+}
+
+template tmpl_purchase_1c(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [x +121,  y, 33,	17,	 -16, -10] //1 car
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+template tmpl_purchase_1c_dual(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [x +121,  y,32,	17,	 -5, -13] //1 car
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+template tmpl_purchase_2c_dual(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [x +32,  y,	8,	17,	 27, -13] //2 car
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+template tmpl_purchase_2c_dual_7(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+  [x +32,  y,	8,	17,	 23, -13] //2 car
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+
+spriteset (gfx_empty, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/misc/purchase_32.png") { [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"] }

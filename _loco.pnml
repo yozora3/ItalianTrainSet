@@ -1,0 +1,3 @@
+//*250-500 Loco
+  item(FEAT_TRAINS, e412, 265) {}
+  #include "src/loco/e412/e412.pnml"

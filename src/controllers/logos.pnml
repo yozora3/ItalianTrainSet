@@ -1,0 +1,9 @@
+template tmpl_badge(x,y) {
+    [x, y, 35, 15, 0, 0]
+}
+template tmpl_badge_metro(x,y) {
+    [x, y, 15, 15, 0, 0]
+}
+template tmpl_badge_line(x,y) {
+    [x, y, 15, 15, -10, 0]
+}
