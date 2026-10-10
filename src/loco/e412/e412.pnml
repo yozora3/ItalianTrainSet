@@ -17,9 +17,20 @@
   }
 
 
-spriteset(e412_head, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_1.png"){ tmpl_symm_v3(0, 0) }
+spriteset(e412_1, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e412_1.png"){ tmpl_symm_v3(0, 0) }
+spriteset(e412_2cc, "src/loco/e412/e412_2cc.png"){ tmpl_symm_v3(0, 0) }
+  TRAIN_CONSTRUCTOR_3(sw_e412_1,  e412_1,  sw_e412_panto, sw_e412_lights)
+  TRAIN_CONSTRUCTOR_4(sw_e412_2cc,  e412_1, e412_2cc,  sw_e412_panto, sw_e412_lights)
+
+switch(FEAT_TRAINS, SELF, sw_e412_lv, cargo_subtype){
+    1: sw_e412_2cc;
+    sw_e412_1;
+  }
+switch(FEAT_TRAINS, SELF, sw_e412_lv_desc_main, cargo_subtype){
+    1: string(STR_LIVERY,string(LV_2CC),1997);
+    string(STR_LIVERY,string(LV_DEFAULT),1997);
+  }
 //*at 600
-  TRAIN_CONSTRUCTOR_3(sw_e412_lv,  e412_head,  sw_e412_panto, sw_e412_lights)
 //
   switch(FEAT_TRAINS, SELF, sw_e412_power_main_dc, tile_powers_railtype("SAAD") || (!railtype_available("SAAD") &&tile_powers_railtype("ELRL"))){
     1: return 8000;
@@ -44,7 +55,7 @@ spriteset(e412_head, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e41
     cost_factor: 16;
     running_cost_factor: 46;
     speed: 220 km/h;
-    cargo_capacity: 0;
+    cargo_capacity: 1;
     track_type:TR_1435_ACDC;
     power: 1 kW;
     tractive_effort_coefficient:  0.2;
@@ -58,8 +69,9 @@ spriteset(e412_head, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e412/e41
     string(STR_USAGE, string(STR_MIXED)),
     string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
     );
-    
+    cargo_subtype_text: sw_e412_lv_desc_main;
     purchase: e412_purchase;
+    cargo_capacity:0;
     default:sw_e412_lv;
     power:sw_e412_power_main;
   }
