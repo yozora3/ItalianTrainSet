@@ -33,6 +33,11 @@ badgetable {
 # 4 "ItalianTrainSet.pnml" 2
 # 1 "src/controllers/errorController.pnml" 1
 disable_item(FEAT_TRAINS);
+
+
+if (((grf_future_status("\50\4E\53\FF") == 0) && (grf_future_status("\50\4E\53\FF") == 0))) {
+ error( ERROR, string(STR_GRF_BADGE));
+}
 # 5 "ItalianTrainSet.pnml" 2
 # 1 "src/controllers/railtypes.pnml" 1
 railtypetable {

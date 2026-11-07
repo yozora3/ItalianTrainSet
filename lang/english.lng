@@ -35,6 +35,8 @@ STR_PARAM_CAP_CUSTOM:Custom
 STR_PARAM_CUSTOMCAPACITY:Multiply capacity. Works only if train capacity set to "custom"
 STR_PARAM_CUSTOMCAPACITYDESC:Do you hate your commuters so much? Come on, they are unable to move already!
 
+STR_GRF_BADGE:Please install "Default Badge Set" to have a better experience with this GRF.{}
+
 # Used for Train Description. Don't change structure of these
 STR_TRAIN_DESC:{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}{}{BLACK}{STRING}
 STR_TRAIN_DESC_LOCO:{BLACK}{STRING}{}{BLACK}{STRING}
