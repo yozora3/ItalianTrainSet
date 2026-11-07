@@ -8,9 +8,23 @@ grf {
     name: string(STR_NAME);
     desc: string(STR_DESC);
   url: string(STR_GRF_URL);
-    version: 001;
+    version: 002;
     min_compatible_version: 0;
 # 298 "src/controllers/params.pnml"
+}
+# 388 "src/controllers/params.pnml"
+badgetable {
+  "flag",
+  "flag/IT",
+  "power",
+
+
+  "power/electric/dc/3kv",
+  "power/electric/dc/1500v",
+  "power/electric/ac/15kv",
+  "role/passenger",
+  "role/mixed",
+  "livery/2cc"
 }
 # 2 "ItalianTrainSet.pnml" 2
 # 1 "src/controllers/defines.pnml" 1
@@ -43,33 +57,33 @@ traininfo_y_offset = 2;
 
 template tmpl_std_v3(x,y) {
   [x, y, 8, 24, -3, -16]
-  [x +9, y, 22, 21, -15, -12]
+  [x +9, y, 22, 21, -16, -12]
   [x +32, y, 33, 17, -15, -13]
-  [x +66, y, 22, 22, -5, -12]
+  [x +66, y, 22, 22, -4, -12]
   [x +89, y, 8, 24, -3, -16]
-  [x +98, y, 22, 22, -15, -12]
+  [x +98, y, 22, 22, -16, -12]
   [x +121, y, 33, 17, -15, -13]
-  [x+155, y, 22, 21, -5, -12]
+  [x+155, y, 22, 21, -4, -12]
 }
 template tmpl_std_rev_v3(x,y){
   [x +89, y, 8, 24, -3, -16]
-  [x +98, y, 22, 22, -15, -12]
+  [x +98, y, 22, 22, -16, -12]
   [x +121, y, 33, 17, -15, -13]
-  [x+155, y, 22, 21, -5, -12]
+  [x+155, y, 22, 21, -4, -12]
   [x, y, 8, 24, -3, -16]
-  [x +9, y, 22, 21, -15, -12]
+  [x +9, y, 22, 21, -16, -12]
   [x +32, y, 33, 17, -15, -13]
-  [x +66, y, 22, 22, -5, -12]
+  [x +66, y, 22, 22, -4, -12]
 }
 template tmpl_symm_v3(x,y) {
   [x, y, 8, 24, -3, -16]
-  [x +9, y, 22, 21, -15, -12]
+  [x +9, y, 22, 21, -16, -12]
   [x +32, y, 33, 17, -15, -13]
-  [x +66, y, 22, 22, -5, -12]
+  [x +66, y, 22, 22, -4, -12]
   [x, y, 8, 24, -3, -16]
-  [x +9, y, 22, 21, -15, -12]
+  [x +9, y, 22, 21, -16, -12]
   [x +32, y, 33, 17, -15, -13]
-  [x +66, y, 22, 22, -5, -12]
+  [x +66, y, 22, 22, -4, -12]
 }
 
 template tmpl_purchase_mu_car(x,y) {
@@ -85,6 +99,16 @@ template tmpl_purchase_1c(x,y) {
   [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
   [x +121, y, 33, 17, -16, -10]
   [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
+}
+template tmpl_purchase_1c_2cc(x,y) {
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase.png"]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase.png"]
+  [x +121, y, 33, 17, -16, -10]
+  [1 , 1, 1, 1, 0, 0, "src/misc/purchase.png"]
 }
 template tmpl_purchase_1c_dual(x,y) {
   [1 , 1, 1, 1, 0, 0, "src/misc/purchase_32.png"]
@@ -135,11 +159,18 @@ template tmpl_badge_line(x,y) {
 # 1 "_loco.pnml" 1
 
   item(FEAT_TRAINS, e412, 265) {}
+  item(FEAT_TRAINS, e412_2cc, 2651) {}
+  item(FEAT_TRAINS, e464, 268) {}
+  item(FEAT_TRAINS, e464_2cc, 2681) {}
+
 # 1 "src/loco/e412/e412.pnml" 1
 
   spriteset(e412_purchase_body, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_1.png"){ tmpl_purchase_1c(0, 0) }
+  spriteset(e412_purchase_body_2cc, "src/loco/e412/e412_2cc.png"){ tmpl_purchase_1c_2cc(0, 0) }
+
   spriteset(e412_purchase_panto, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_panto.png"){ tmpl_purchase_1c(0, 0) }
   switch(FEAT_TRAINS, SELF, e412_purchase, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: e412_purchase_body; 1: e412_purchase_panto;}
+  switch(FEAT_TRAINS, SELF, e412_purchase_2cc, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: e412_purchase_body; 1: e412_purchase_body_2cc; 2: e412_purchase_panto;}
 
   spriteset(e412_lights_front, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_lights.png"){ tmpl_std_v3(0, 0) }
   spriteset(e412_lights_end, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_lights.png"){ tmpl_std_rev_v3(0, 0) }
@@ -155,19 +186,11 @@ template tmpl_badge_line(x,y) {
   }
 
 
-spriteset(e412_1, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_1.png"){ tmpl_symm_v3(0, 0) }
-spriteset(e412_2cc, "src/loco/e412/e412_2cc.png"){ tmpl_symm_v3(0, 0) }
-  switch(FEAT_TRAINS, SELF, sw_e412_1, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: e412_1; 1: sw_e412_panto; 2: sw_e412_lights;}
-  switch(FEAT_TRAINS, SELF, sw_e412_2cc, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: e412_1; 1: e412_2cc; 2: sw_e412_panto; 3: sw_e412_lights;}
+spriteset(gfx_e412_1, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e412/e412_1.png"){ tmpl_symm_v3(0, 0) }
+spriteset(gfx_e412_2cc, "src/loco/e412/e412_2cc.png"){ tmpl_symm_v3(0, 0) }
+  switch(FEAT_TRAINS, SELF, sw_e412, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: gfx_e412_1; 1: sw_e412_panto; 2: sw_e412_lights;}
+  switch(FEAT_TRAINS, SELF, sw_e412_2cc, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: gfx_e412_1; 1: gfx_e412_2cc; 2: sw_e412_panto; 3: sw_e412_lights;}
 
-switch(FEAT_TRAINS, SELF, sw_e412_lv, cargo_subtype){
-    1: sw_e412_2cc;
-    sw_e412_1;
-  }
-switch(FEAT_TRAINS, SELF, sw_e412_lv_desc_main, cargo_subtype){
-    1: string(STR_LIVERY,string(LV_2CC),1997);
-    string(STR_LIVERY,string(LV_DEFAULT),1997);
-  }
 
 
   switch(FEAT_TRAINS, SELF, sw_e412_power_main_dc, tile_powers_railtype("SAAD") || (!railtype_available("SAAD") &&tile_powers_railtype("ELRL"))){
@@ -182,7 +205,7 @@ switch(FEAT_TRAINS, SELF, sw_e412_lv_desc_main, cargo_subtype){
 
   item(FEAT_TRAINS, e412) {
   property {
-    ai_special_flag: AI_FLAG_PASSENGER; sprite_id: SPRITE_ID_NEW_TRAIN; misc_flags: bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_SPRITE_STACK, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY,TRAIN_FLAG_2CC); running_cost_base: RUNNING_COST_ELECTRIC; refittable_cargo_classes: bitmask(CC_PASSENGERS); bitmask_vehicle_info: 0; power: 1 kW; reliability_decay: 2;
+    ai_special_flag: AI_FLAG_PASSENGER; sprite_id: SPRITE_ID_NEW_TRAIN; misc_flags: bitmask(TRAIN_FLAG_SPRITE_STACK, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY,TRAIN_FLAG_2CC); running_cost_base: RUNNING_COST_ELECTRIC; refittable_cargo_classes: bitmask(CC_PASSENGERS); bitmask_vehicle_info: 0; power: 1 kW; reliability_decay: 2;
     engine_class: ENGINE_CLASS_ELECTRIC; visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);
     climates_available: ALL_CLIMATES;
     name: string(STR_TRAIN_NAME, "E.412", string(STR_NAME_CLASS));
@@ -198,21 +221,142 @@ switch(FEAT_TRAINS, SELF, sw_e412_lv_desc_main, cargo_subtype){
     power: 1 kW;
     tractive_effort_coefficient: 0.2;
     weight: 89 ton;
+    badges: ["flag/IT","power/electric/dc/3kv","power/electric/dc/1500v","power/electric/ac/15kv","role/mixed"];
 
   }
  graphics {
     additional_text:string(STR_TRAIN_DESC_LOCO,
     string(STR_1435),
-    string(STR_DENKI, string(STR_ACDC_167_1500,15,3000)),
-    string(STR_USAGE, string(STR_MIXED)),
     string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
     );
-    cargo_subtype_text: sw_e412_lv_desc_main;
     purchase: e412_purchase;
     cargo_capacity:0;
-    default:sw_e412_lv;
+    default:sw_e412;
     power:sw_e412_power_main;
   }
 }
-# 3 "_loco.pnml" 2
+  item(FEAT_TRAINS, e412_2cc) {
+  property {
+    ai_special_flag: AI_FLAG_PASSENGER; sprite_id: SPRITE_ID_NEW_TRAIN; misc_flags: bitmask(TRAIN_FLAG_SPRITE_STACK, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY,TRAIN_FLAG_2CC); running_cost_base: RUNNING_COST_ELECTRIC; refittable_cargo_classes: bitmask(CC_PASSENGERS); bitmask_vehicle_info: 0; power: 1 kW; reliability_decay: 2;
+    engine_class: ENGINE_CLASS_ELECTRIC; visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);
+    climates_available: ALL_CLIMATES;
+    name: string(STR_TRAIN_NAME, "E.412", string(STR_NAME_CLASS));
+    introduction_date: date(1997, 4, 12);
+    model_life: VEHICLE_NEVER_EXPIRES;
+    vehicle_life: 30;
+    dual_headed: 0;
+    cost_factor: 16;
+    running_cost_factor: 46;
+    speed: 220 km/h;
+    cargo_capacity: 1;
+    track_type:TR_1435_ACDC;
+    power: 1 kW;
+    tractive_effort_coefficient: 0.2;
+    weight: 89 ton;
+    badges: ["flag/IT","power/electric/dc/3kv","power/electric/dc/1500v","power/electric/ac/15kv","role/mixed","livery/2cc"];
+    variant_group: e412;
+
+  }
+ graphics {
+    additional_text:string(STR_TRAIN_DESC_LOCO,
+    string(STR_1435),
+    string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
+    );
+    purchase: e412_purchase_2cc;
+    cargo_capacity:0;
+    default:sw_e412_2cc;
+    power:sw_e412_power_main;
+  }
+}
+# 8 "_loco.pnml" 2
+# 1 "src/loco/e464/e464.pnml" 1
+
+  spriteset(e464_purchase_body, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e464/e464_1.png"){ tmpl_purchase_1c(0, 0) }
+  spriteset(e464_purchase_body_2cc, "src/loco/e464/e464_2cc.png"){ tmpl_purchase_1c_2cc(0, 0) }
+  spriteset(e464_purchase_panto, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e464/e464_panto.png"){ tmpl_purchase_1c(0, 0) }
+  switch(FEAT_TRAINS, SELF, e464_purchase, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: e464_purchase_body; 1: e464_purchase_panto;}
+  switch(FEAT_TRAINS, SELF, e464_purchase_2cc, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: e464_purchase_body; 1: e464_purchase_body_2cc; 2: e464_purchase_panto;}
+
+  spriteset(e464_lights_front, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e464/e464_lights.png"){ tmpl_std_v3(0, 0) }
+  spriteset(e464_lights_end, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e464/e464_lights.png"){ tmpl_std_v3(0, 25) }
+  switch(FEAT_TRAINS, SELF, sw_e464_lights, train_is_driving_backwards != vehicle_is_flipped){
+    1: e464_lights_end;
+    e464_lights_front;
+  }
+  spriteset(sw_e464_panto, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e464/e464_panto.png"){ tmpl_std_v3(0, 0) }
+
+spriteset(gfx_e464_1, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/loco/e464/e464_1.png"){ tmpl_std_v3(0, 0) }
+spriteset(gfx_e464_2cc, "src/loco/e464/e464_2cc.png"){ tmpl_std_v3(0, 0) }
+
+  switch(FEAT_TRAINS, SELF, sw_e464, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: gfx_e464_1; 1: sw_e464_panto; 2: sw_e464_lights;}
+  switch(FEAT_TRAINS, SELF, sw_e464_2cc, [ STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 0: gfx_e464_1; 1: gfx_e464_2cc; 2: sw_e464_panto; 3: sw_e464_lights;}
+
+
+  item(FEAT_TRAINS, e464) {
+  property {
+    ai_special_flag: AI_FLAG_PASSENGER; sprite_id: SPRITE_ID_NEW_TRAIN; misc_flags: bitmask(TRAIN_FLAG_SPRITE_STACK, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY,TRAIN_FLAG_2CC); running_cost_base: RUNNING_COST_ELECTRIC; refittable_cargo_classes: bitmask(CC_PASSENGERS); bitmask_vehicle_info: 0; power: 1 kW; reliability_decay: 2;
+    engine_class: ENGINE_CLASS_ELECTRIC; visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);
+    climates_available: ALL_CLIMATES;
+    name: string(STR_TRAIN_NAME, "E.464", string(STR_NAME_CLASS));
+    introduction_date: date(1999, 4, 1);
+    model_life: VEHICLE_NEVER_EXPIRES;
+    vehicle_life: 30;
+    dual_headed: 0;
+    cost_factor: 16;
+    running_cost_factor: 46;
+    speed: 160 km/h;
+    cargo_capacity: 1;
+    track_type:TR_1435_DC;
+    power: 1 kW;
+    tractive_effort_coefficient: 0.2;
+    weight: 72 ton;
+    badges: ["flag/IT", "power/electric/dc/3kv","role/passenger"];
+
+  }
+ graphics {
+    additional_text:string(STR_TRAIN_DESC_LOCO,
+    string(STR_1435),
+    string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
+    );
+    purchase: e464_purchase;
+    cargo_capacity:0;
+    default:sw_e464;
+    power:4700;
+  }
+}
+
+  item(FEAT_TRAINS, e464_2cc) {
+  property {
+    ai_special_flag: AI_FLAG_PASSENGER; sprite_id: SPRITE_ID_NEW_TRAIN; misc_flags: bitmask(TRAIN_FLAG_SPRITE_STACK, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY,TRAIN_FLAG_2CC); running_cost_base: RUNNING_COST_ELECTRIC; refittable_cargo_classes: bitmask(CC_PASSENGERS); bitmask_vehicle_info: 0; power: 1 kW; reliability_decay: 2;
+    engine_class: ENGINE_CLASS_ELECTRIC; visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);
+    climates_available: ALL_CLIMATES;
+    name: string(STR_TRAIN_NAME, "E.464", string(STR_NAME_CLASS));
+    introduction_date: date(1999, 4, 1);
+    model_life: VEHICLE_NEVER_EXPIRES;
+    vehicle_life: 30;
+    dual_headed: 0;
+    cost_factor: 16;
+    running_cost_factor: 46;
+    speed: 160 km/h;
+    cargo_capacity: 1;
+    track_type:TR_1435_DC;
+    power: 1 kW;
+    tractive_effort_coefficient: 0.2;
+    weight: 72 ton;
+    badges: ["flag/IT", "power/electric/dc/3kv","role/passenger","livery/2cc"];
+    variant_group: e464;
+
+  }
+ graphics {
+    additional_text:string(STR_TRAIN_DESC_LOCO,
+    string(STR_1435),
+    string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
+    );
+    purchase: e464_purchase_2cc;
+    cargo_capacity:0;
+    default:sw_e464_2cc;
+    power:4700;
+  }
+}
+# 8 "_loco.pnml" 2
 # 12 "ItalianTrainSet.pnml" 2

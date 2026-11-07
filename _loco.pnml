@@ -1,3 +1,8 @@
 //*250-500 Loco
   item(FEAT_TRAINS, e412, 265) {}
+  item(FEAT_TRAINS, e412_2cc, 2651) {}
+  item(FEAT_TRAINS, e464, 268) {}
+  item(FEAT_TRAINS, e464_2cc, 2681) {}
+
   #include "src/loco/e412/e412.pnml"
+  #include "src/loco/e464/e464.pnml"

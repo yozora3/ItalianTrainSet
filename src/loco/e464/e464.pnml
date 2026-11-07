@@ -1,0 +1,88 @@
+// purchase
+  spriteset(e464_purchase_body, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e464/e464_1.png"){ tmpl_purchase_1c(0, 0) }
+  spriteset(e464_purchase_body_2cc, "src/loco/e464/e464_2cc.png"){ tmpl_purchase_1c_2cc(0, 0) }
+  spriteset(e464_purchase_panto, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e464/e464_panto.png"){ tmpl_purchase_1c(0, 0) }
+  TRAIN_CONSTRUCTOR_2(e464_purchase,  e464_purchase_body,  e464_purchase_panto)
+  TRAIN_CONSTRUCTOR_3(e464_purchase_2cc,  e464_purchase_body, e464_purchase_body_2cc,  e464_purchase_panto)
+//base
+  spriteset(e464_lights_front, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e464/e464_lights.png"){ tmpl_std_v3(0, 0) }
+  spriteset(e464_lights_end, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e464/e464_lights.png"){ tmpl_std_v3(0, 25) }
+  switch(FEAT_TRAINS, SELF, sw_e464_lights, train_is_driving_backwards != vehicle_is_flipped){
+    1: e464_lights_end;
+    e464_lights_front;
+  }
+  spriteset(sw_e464_panto, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e464/e464_panto.png"){ tmpl_std_v3(0, 0) }
+
+spriteset(gfx_e464_1, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,      "src/loco/e464/e464_1.png"){ tmpl_std_v3(0, 0) }
+spriteset(gfx_e464_2cc, "src/loco/e464/e464_2cc.png"){ tmpl_std_v3(0, 0) }
+
+  TRAIN_CONSTRUCTOR_3(sw_e464,  gfx_e464_1,  sw_e464_panto, sw_e464_lights)
+  TRAIN_CONSTRUCTOR_4(sw_e464_2cc,  gfx_e464_1, gfx_e464_2cc, sw_e464_panto, sw_e464_lights)
+
+//*constructor
+  item(FEAT_TRAINS, e464) {
+  property {
+    OVERRIDEN_TRAIN_DATA
+    engine_class: ENGINE_CLASS_ELECTRIC;    visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);    
+    climates_available: ALL_CLIMATES;
+    name: string(STR_TRAIN_NAME, "E.464", string(STR_NAME_CLASS));
+    introduction_date: date(1999, 4, 1);
+    model_life: VEHICLE_NEVER_EXPIRES;
+    vehicle_life: 30;
+    dual_headed: 0;
+    cost_factor: 16;
+    running_cost_factor: 46;
+    speed: 160 km/h;
+    cargo_capacity: 1;
+    track_type:TR_1435_DC;
+    power: 1 kW;
+    tractive_effort_coefficient:  0.2;
+    weight: 72 ton;
+    badges: ["flag/IT", "power/electric/dc/3kv","role/passenger"];
+    
+  }
+	graphics {
+    additional_text:string(STR_TRAIN_DESC_LOCO,
+    string(STR_1435),
+    string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
+    );
+    purchase: e464_purchase;
+    cargo_capacity:0;
+    default:sw_e464;
+    power:4700;
+  }
+}
+
+  item(FEAT_TRAINS, e464_2cc) {
+  property {
+    OVERRIDEN_TRAIN_DATA
+    engine_class: ENGINE_CLASS_ELECTRIC;    visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);    
+    climates_available: ALL_CLIMATES;
+    name: string(STR_TRAIN_NAME, "E.464", string(STR_NAME_CLASS));
+    introduction_date: date(1999, 4, 1);
+    model_life: VEHICLE_NEVER_EXPIRES;
+    vehicle_life: 30;
+    dual_headed: 0;
+    cost_factor: 16;
+    running_cost_factor: 46;
+    speed: 160 km/h;
+    cargo_capacity: 1;
+    track_type:TR_1435_DC;
+    power: 1 kW;
+    tractive_effort_coefficient:  0.2;
+    weight: 72 ton;
+    badges: ["flag/IT", "power/electric/dc/3kv","role/passenger","livery/2cc"];
+    variant_group: e464;
+    
+  }
+	graphics {
+    additional_text:string(STR_TRAIN_DESC_LOCO,
+    string(STR_1435),
+    string(STR_OPERATOR, string(STR_LIME,string(STR_TRENITALIA)))
+    );
+    purchase: e464_purchase_2cc;
+    cargo_capacity:0;
+    default:sw_e464_2cc;
+    power:4700;
+  }
+}
